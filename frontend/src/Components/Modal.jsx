@@ -13,14 +13,15 @@ const Modal = ({ children, isOpen, onClose, title, hideHeader }) => {
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 w-full h-full"
-      onClick={onClose} // closes on background click
-    >
+   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50 w-full h-full">
       <div
-        className="relative bg-white rounded-xl shadow-lg w-[90vw] max-w-md max-h-[90vh] flex flex-col overflow-hidden"
-        onClick={(e) => e.stopPropagation()} // prevents close when clicking inside modal
+        className={`relative flex flex-col bg-white shadow-lg rounded-xl overflow-hidden `}
       >
+        {!hideHeader && (
+          <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <h3 className="md:text-lg font-medium text-gray-900">{title}</h3>
+          </div>
+        )}
         {/* ✕ Close Button */}
         <button
           type="button"
