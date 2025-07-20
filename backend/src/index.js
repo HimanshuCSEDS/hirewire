@@ -24,7 +24,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // ✅ frontend origin
+    origin: "https://hirewire-mh66.onrender.com", // ✅ frontend origin
     credentials: true,               // ✅ allow cookies
   })
 );
