@@ -12,7 +12,7 @@ const LandingPage = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [openAuthModal, setOpenAuthModal] = useState(false);
-  const [currentPage, setcurrentPage] = useState("login");
+  const [currentPage, setCurrentPage] = useState("login");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleCTA = () => {
@@ -121,7 +121,7 @@ const LandingPage = () => {
 
       {/* Hero Image */}
       <div className="w-full min-h-full relative z-10">
-        <section className="flex justify-center items-center -mt-59">
+        <section className="flex justify-center items-center mt-[-15rem]">
           <img
             src={"/Landing.jpg"}
             alt="Hero img"
@@ -170,19 +170,19 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Auth Modal */}
       <Modal
         isOpen={openAuthModal}
         onClose={() => {
           setOpenAuthModal(false);
-          setcurrentPage("login");
+          setCurrentPage("login");
         }}
         hideHeader
       >
         <div>
-          {currentPage === "login" && <Login setcurrentPage={setcurrentPage} />}
+          {currentPage === "login" && <Login setCurrentPage={setCurrentPage} />}
           {currentPage === "signup" && (
-            <SignUp setcurrentPage={setcurrentPage} />
+            <SignUp setCurrentPage={setCurrentPage} />
           )}
         </div>
       </Modal>
