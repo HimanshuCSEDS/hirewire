@@ -24,11 +24,23 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://hirewire-mh66.onrender.com", // ✅ frontend origin
-    credentials: true,               // ✅ allow cookies
+    origin: (origin, callback) => {
+      console.log("🔍 Incoming request origin:", origin);
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://hirewire-mh66.onrender.com",
+      ];
+
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("❌ Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
-
 
 app.use(cookieParser());
 
